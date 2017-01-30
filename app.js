@@ -1,53 +1,69 @@
+
 (function ($) {
 
-     function generate() {
-    var myString = ["The, quick, brown,  fox,  jumps,  over,  the,  lazy,  dog"];
-    var splits = myString.split(" ");
-    var x = document.getElementById(generate);
-    window.alert(splits);
+  function generate() {
+    var source = "the quick brown fox jumps over the lazy dog";
+
+    // returns each word on a new line
+    var splits = source.split(" ");
+    return splits.join('<br>');
   }
 
-     function sortWords(){
-      var myArray = ["The,  quick,  brown,  fox,  jumps,  over,  the,  lazy,  dog"];
-      var b = myArray.sort(" ");
-      window.alert(b);
-    }
+  $("#generate").on("click", function (event) {
+    $('#displayResults').html(generate());
+  });
 
-    function wordLengths(){
-       var longWords =  ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
-       var x = longWords.sort(function (a, b) {
-        return (a.length < b.length);
-        window.alert(x);
+  //-----------------
 
+  function sortWords() {
+    var source = "the quick brown fox jumps over the lazy dog";
+    //sort all words alphabetically
+    var splits = source.split(" ");
+    var sorted = splits.sort();
+    return sorted.join('<br>');
 
+  }
 
-    });
+  $("#sortWords").on("click", function (event) {
+    $('#displayResults').html(sortWords());
+  });
 
-      function wordReverse() {
-        var words = ["The", "quick", brown, fox, jumps, over, the, laz, dog];
-        var shortWords = words.reverse(" ");
-    window.alert(shortWords);
+  //---------------------------------------------
 
-
-    }
-
-
-
-
-    $("#generate").on("click", function (event){
-      $('#guid').html(generate());
-});
-
-    $("#sortWords").on("click", function (event){
-      $('#guid').html(sortWords());
-});
-
-    $("#wordLengths").on("click", function (event){
-      $('#guid').html(wordLengths());
-});
-    $("#wordReverse").on("click", function (event){
-      $('#guid').html(wordReverse());
-
+  function wordLength() {
+    var source = "the quick brown fox jumps over the lazy dog";
+    // returns each word on a new line
+    var splits = source.split(" ");
+    var sorted = splits.sort(function (a, b) {
+      return (a.length < b.length);
 
     });
- })(jQuery);
+    return sorted.join('<br>');
+  };
+
+
+  $("#wordLength").on("click", function (event) {
+    $('#displayResults').html(wordLength());
+
+  });
+
+  //-------------------------------------------------    
+
+  function reversewords() {
+    var source = "the quick brown fox jumps over the lazy dog";
+    var splits = source.split(" ");
+    // returns each word on a new line
+    var reversed = splits.reverse(" ");
+    return reversed.join('<br>');
+
+  }
+
+  $("#reversewords").on("click", function (event) {
+    $('#displayResults').html(reversewords());
+
+  });
+
+
+})(jQuery);
+
+
